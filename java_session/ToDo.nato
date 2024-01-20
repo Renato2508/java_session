@@ -1,0 +1,94 @@
+ INSERT INTO sessions (id, access, data) VALUES ('0:0:0:0:0:0:0:1-2023.10.28.18.51.12', 1698515472730, '{"h_connex":"2023-10-28T18:51:12.698923400"}') 
+ ON DUPLICATE KEY Update data = 
+ values ('{"h_connex":"2023-10-28T18:51:12.698923400"}')
+
+
+INSERT INTO sessions (id, access, data) VALUES (32, 45123, ) ON DUPLICATE KEY data = CAST('{"koko":02}' AS JSON);
+
+
+-- je veux écrire la fonction décrite ci dessous
+-- nous travaillons dans MA CLASSE SESSION HANDLER
+-- SESSION EST UNE CLASSE QUE J AI ECRITE AVEC UN CONSTRUCTEUR 
+    Session(String id_sh, SessionHandler)
+    
+--  protected Session getSession(HttpRequest req){
+        // récuperer la variable de cookie
+        // lire l'attribut id_sh
+        // si présent faire une lecture 
+        // en appelant la méthode read(id_sh)  de signature: protected Session read(String id_sh)
+
+        // sinon générer l'id unique en appelant la fontion generateId de signature:     protected String generateID(HttpRequest req) {
+
+            // instancier une session
+            // lui donner l'id généré 
+        // retourner la session
+    }
+
+-- 
+
+
+
+
+
+-- ecris la fonction de signature protected String generateID(HttpRequest req)
+-- le but est de générer une chaine de caractère unique
+-- pour ce faire récupère l'adresse mac dans la requete et concatène la avec le timestamp courant;
+
+
+
+-- function read ($id) {
+            // récupération des données de session depuis la DB
+            $sql = "SELECT data FROM sessions WHERE id='%s'";
+            $sql = sprintf(  $sql , $id );
+            $stmt = $this->pdo->query($sql);
+            //echo $sql.'</br>';
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($result) {
+                return $result['data'];
+            } else {
+                return '';
+            }
+        }
+
+-- traduire en java le code donné 
+-- voici la signature java attendue 
+protected Session read(String id_sh)
+-- la classe de retour Session se définit grosso modo comme suit
+    Session{
+        HashMap<String Object>  data;
+        String id;
+    }
+-- j'ai DEJA la variable connex (de type connexion en java) pour me connecter a ma base de données postgreSQL
+
+-- le contenu de la colonne data de la base de donnée est de type JSON, et elle doit être retournée dans l'attribut data de Session;
+-- la colonne id de la DB correspond a l'id de Session;
+
+
+
+
+
+
+
+-- protected void write(Session session)
+-- écrire l'implémentation de cette fonction en java en prenant pour modèle le code PHP ci dessous
+
+function write ($id, $data) {
+            // stockage des données de session dans la DB
+            $sql = "INSERT INTO sessions VALUES ( '%s' , %s , '%s') ON CONFLICT (id) DO UPDATE SET data = '%s'";
+            $sql = sprintf( $sql , $id , time() , $data , $data );
+            $this->pdo->exec($sql);
+            //echo $sql.'</br>';
+            //var_dump($data);
+            return true;
+        }
+
+
+-- AVEC LES DONNEES SUIVANTES
+-- j'ai DEJA la variable connex (de type connexion en java) pour me connecter a ma base de données postgreSQL
+-- l'argument session a un attribut id_sh qui peur etre récupéré par un getter et utilisé dans la requete sql
+-- la connexion connex est en mode autocommit false
+
+-- $data doit etre remplacée par la sérialisation sous forme de JSON de l'attribut data de session;
+
+

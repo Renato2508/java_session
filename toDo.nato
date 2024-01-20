@@ -1,0 +1,11 @@
+-- roundRobin (RB)
+-- STICKY SESSION (utilisation de cookie)
+-- HANDLER (PHP)
+    -- creation d'une classe qui extends SessionHndler
+    -- stockage des sessions dans une base de donnees
+    -- continuer d'utiliser RB
+    -- implementer toutes les méthodes de la classes handler en sorte de faire le stockage des données de session dans une base de donnees POSTGRESQL
+    -- écrire le code dans une fenetre formatee et un code PHP complet pret à ètre executé
+
+    -- mnt décris moi l'utilité et les circonstances d'utilisation de chacune de ces fonctions
+-- HTTPSESSION (JAVA)

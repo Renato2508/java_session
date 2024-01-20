@@ -1,0 +1,2 @@
+-- accès a des base de donnes mysql en roundrobin avec haporxy
+-- comment autoriser le serveru haproxy a se connecter aux instaances de mysql

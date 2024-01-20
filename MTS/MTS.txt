@@ -1,0 +1,1 @@
+CREATE SUBSCRIPTION sub_personne CONNECTION 'dbname=master_slave host=192.168.43.20 user=mirindra password=mirindra' PUBLICATION mirindra;
